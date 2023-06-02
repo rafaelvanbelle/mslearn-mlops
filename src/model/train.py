@@ -32,7 +32,7 @@ def get_csvs_df(path):
         raise RuntimeError(f"No CSV files found in provided data path: {path}")
     return pd.concat((pd.read_csv(f) for f in csv_files), sort=False)
 
-
+#Do something crazy
 # TO DO: add function to split data
 def split_data(df):
 
