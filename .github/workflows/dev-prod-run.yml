@@ -9,6 +9,7 @@ jobs:
   job1:
     name: experiment
     runs-on: ubuntu-latest
+    environment: DEV
     steps:
     - name: check out repo
       uses: actions/checkout@main
@@ -23,6 +24,7 @@ jobs:
   job2:
     name: production
     runs-on: ubuntu-latest
+    environment: PROD
     steps:
     - name: check out repo
       uses: actions/checkout@main
