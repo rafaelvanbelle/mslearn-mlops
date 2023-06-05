@@ -1,0 +1,37 @@
+name: dev-prod-run
+
+on: 
+  push:
+    branches:    
+      - main
+
+jobs:
+  job1:
+    name: experiment
+    runs-on: ubuntu-latest
+    steps:
+    - name: check out repo
+      uses: actions/checkout@main
+    - name: install az ml extension
+      uses: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: run ML job
+      run: az ml job create -f ./src/job_dev.yml -g rg-distillation-raf -w ws-distillation-raf
+  job2:
+    name: production
+    runs-on: ubuntu-latest
+    steps:
+    - name: check out repo
+      uses: actions/checkout@main
+    - name: install az ml extension
+      uses: az extension add -n ml -y
+    - name: Azure login
+      uses: azure/login@1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: run ML job
+      run: az ml job create -f ./src/job_prod.yml -g rg-distillation-raf -w ws-distillation-raf
+  
