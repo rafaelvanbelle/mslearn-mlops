@@ -25,6 +25,7 @@ jobs:
     name: production
     runs-on: ubuntu-latest
     environment: PROD
+    needs: job1
     steps:
     - name: check out repo
       uses: actions/checkout@main
