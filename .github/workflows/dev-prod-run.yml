@@ -1,9 +1,7 @@
 name: dev-prod-run
 
 on: 
-  push:
-    branches:    
-      - main
+  workflow_dispatch:
 
 jobs:
   job1:
