@@ -17,7 +17,7 @@ jobs:
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
     - name: create a real-time endpoint
-      run: az ml endpoint create --file ./src/endpoint.yml -g rg-distillation-raf -w ws-distillation-raf
+      run: az ml online-endpoint create --file ./src/endpoint.yml -g rg-distillation-raf -w ws-distillation-raf
     - name: deploy model to endpoint
       run: az ml online-deployment create --file ./src/deployment.yml -g rg-distillation-raf -w ws-distillation-raf
 
